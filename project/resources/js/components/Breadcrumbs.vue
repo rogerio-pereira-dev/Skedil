@@ -1,15 +1,10 @@
-<script setup lang="ts">
+<script setup>
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from '@/components/ui/breadcrumb';
 import { Link } from '@inertiajs/vue3';
 
-interface BreadcrumbItemType {
-    title: string;
-    href?: string;
-}
-
-defineProps<{
-    breadcrumbs: BreadcrumbItemType[];
-}>();
+defineProps({
+    breadcrumbs: Array,
+});
 </script>
 
 <template>

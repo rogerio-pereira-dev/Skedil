@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 import { useForm } from '@inertiajs/vue3';
 import { ref } from 'vue';
 
@@ -25,7 +25,7 @@ const form = useForm({
     password: '',
 });
 
-const deleteUser = (e: Event) => {
+const deleteUser = (e= Event) => {
     e.preventDefault();
 
     form.delete(route('profile.destroy'), {

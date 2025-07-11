@@ -1,12 +1,11 @@
-<script setup lang="ts">
+<script setup>
 import Breadcrumbs from '@/components/Breadcrumbs.vue';
 import { SidebarTrigger } from '@/components/ui/sidebar';
-import type { BreadcrumbItemType } from '@/types';
 
 withDefaults(
-    defineProps<{
-        breadcrumbs?: BreadcrumbItemType[];
-    }>(),
+    defineProps({
+        breadcrumbs: Array,
+    }),
     {
         breadcrumbs: () => [],
     },

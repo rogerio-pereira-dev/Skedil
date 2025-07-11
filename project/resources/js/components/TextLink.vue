@@ -1,15 +1,12 @@
-<script setup lang="ts">
-import { Method } from '@inertiajs/core';
+<script setup>
 import { Link } from '@inertiajs/vue3';
 
-interface Props {
-    href: string;
-    tabindex?: number;
-    method?: Method;
-    as?: string;
-}
-
-defineProps<Props>();
+defineProps({
+    href: String,
+    tabindex: Number,
+    method: String,
+    as: String,
+});
 </script>
 
 <template>

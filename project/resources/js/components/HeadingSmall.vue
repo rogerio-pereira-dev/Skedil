@@ -1,10 +1,8 @@
-<script setup lang="ts">
-interface Props {
-    title: string;
-    description?: string;
-}
-
-defineProps<Props>();
+<script setup>
+defineProps({
+    title: String,
+    description: String,
+});
 </script>
 
 <template>

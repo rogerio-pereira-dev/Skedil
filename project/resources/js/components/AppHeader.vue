@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 import AppLogo from '@/components/AppLogo.vue';
 import AppLogoIcon from '@/components/AppLogoIcon.vue';
 import Breadcrumbs from '@/components/Breadcrumbs.vue';
@@ -10,29 +10,24 @@ import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/co
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import UserMenuContent from '@/components/UserMenuContent.vue';
 import { getInitials } from '@/composables/useInitials';
-import type { BreadcrumbItem, NavItem } from '@/types';
 import { Link, usePage } from '@inertiajs/vue3';
 import { BookOpen, Folder, LayoutGrid, Menu, Search } from 'lucide-vue-next';
 import { computed } from 'vue';
 
-interface Props {
-    breadcrumbs?: BreadcrumbItem[];
-}
-
-const props = withDefaults(defineProps<Props>(), {
-    breadcrumbs: () => [],
+const props = defineProps({
+    breadcrumbs: Array,
 });
 
 const page = usePage();
 const auth = computed(() => page.props.auth);
 
-const isCurrentRoute = computed(() => (url: string) => page.url === url);
+const isCurrentRoute = computed(() => (url) => page.url === url);
 
 const activeItemStyles = computed(
-    () => (url: string) => (isCurrentRoute.value(url) ? 'text-neutral-900 dark:bg-neutral-800 dark:text-neutral-100' : ''),
+    () => (url) => (isCurrentRoute.value(url) ? 'text-neutral-900 dark:bg-neutral-800 dark:text-neutral-100' : ''),
 );
 
-const mainNavItems: NavItem[] = [
+const mainNavItems = [
     {
         title: 'Dashboard',
         href: '/dashboard',
@@ -40,7 +35,7 @@ const mainNavItems: NavItem[] = [
     },
 ];
 
-const rightNavItems: NavItem[] = [
+const rightNavItems = [
     {
         title: 'Repository',
         href: 'https://github.com/laravel/vue-starter-kit',

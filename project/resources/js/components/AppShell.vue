@@ -1,12 +1,10 @@
-<script setup lang="ts">
+<script setup>
 import { SidebarProvider } from '@/components/ui/sidebar';
 import { usePage } from '@inertiajs/vue3';
 
-interface Props {
-    variant?: 'header' | 'sidebar';
-}
-
-defineProps<Props>();
+defineProps({
+    variant: String,
+});
 
 const isOpen = usePage().props.sidebarOpen;
 </script>

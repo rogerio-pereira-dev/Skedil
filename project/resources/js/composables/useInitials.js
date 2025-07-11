@@ -1,12 +1,10 @@
-export function getInitials(fullName?: string): string {
+export function getInitials(fullName) {
     if (!fullName) return '';
 
     const names = fullName.trim().split(' ');
-
-    if (names.length === 0) return '';
-    if (names.length === 1) return names[0].charAt(0).toUpperCase();
-
-    return `${names[0].charAt(0)}${names[names.length - 1].charAt(0)}`.toUpperCase();
+    const initials = names.map(name => name.charAt(0)).join('').toUpperCase();
+    
+    return initials.slice(0, 2);
 }
 
 export function useInitials() {
