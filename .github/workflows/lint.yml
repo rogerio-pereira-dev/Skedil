@@ -25,17 +25,21 @@ jobs:
           php-version: '8.4'
 
       - name: Install Dependencies
+        working-directory: ./project
         run: |
           composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
           npm install
 
       - name: Run Pint
+        working-directory: ./project
         run: vendor/bin/pint
 
       - name: Format Frontend
+        working-directory: ./project
         run: npm run format
 
       - name: Lint Frontend
+        working-directory: ./project
         run: npm run lint
 
       # - name: Commit Changes
