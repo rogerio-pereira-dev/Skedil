@@ -1,9 +1,7 @@
 import { onMounted, ref } from 'vue';
 import { useTheme } from 'vuetify';
 
-type Appearance = 'light' | 'dark' | 'system';
-
-export function updateTheme(value: Appearance) {
+export function updateTheme(value) {
     if (typeof window === 'undefined') {
         return;
     }
@@ -19,7 +17,7 @@ export function updateTheme(value: Appearance) {
     }
 }
 
-const setCookie = (name: string, value: string, days = 365) => {
+const setCookie = (name, value, days = 365) => {
     if (typeof document === 'undefined') {
         return;
     }
@@ -42,7 +40,7 @@ const getStoredAppearance = () => {
         return null;
     }
 
-    return localStorage.getItem('appearance') as Appearance | null;
+    return localStorage.getItem('appearance');
 };
 
 const handleSystemThemeChange = () => {
@@ -64,18 +62,18 @@ export function initializeTheme() {
     mediaQuery()?.addEventListener('change', handleSystemThemeChange);
 }
 
-const appearance = ref<Appearance>('system');
+const appearance = ref('system');
 
 export function useAppearance() {
     onMounted(() => {
-        const savedAppearance = localStorage.getItem('appearance') as Appearance | null;
+        const savedAppearance = localStorage.getItem('appearance');
 
         if (savedAppearance) {
             appearance.value = savedAppearance;
         }
     });
 
-    function updateAppearance(value: Appearance) {
+    function updateAppearance(value) {
         appearance.value = value;
 
         // Store in localStorage for client-side persistence...
