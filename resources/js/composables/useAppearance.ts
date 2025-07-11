@@ -1,4 +1,5 @@
 import { onMounted, ref } from 'vue';
+import { useTheme } from 'vuetify';
 
 type Appearance = 'light' | 'dark' | 'system';
 
@@ -7,13 +8,14 @@ export function updateTheme(value: Appearance) {
         return;
     }
 
+    const theme = useTheme();
+
     if (value === 'system') {
         const mediaQueryList = window.matchMedia('(prefers-color-scheme: dark)');
         const systemTheme = mediaQueryList.matches ? 'dark' : 'light';
-
-        document.documentElement.classList.toggle('dark', systemTheme === 'dark');
+        theme.global.name.value = systemTheme;
     } else {
-        document.documentElement.classList.toggle('dark', value === 'dark');
+        theme.global.name.value = value;
     }
 }
 

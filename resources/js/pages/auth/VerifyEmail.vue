@@ -1,36 +1,50 @@
 <script setup lang="ts">
-import TextLink from '@/components/TextLink.vue';
-import { Button } from '@/components/ui/button';
-import AuthLayout from '@/layouts/AuthLayout.vue';
-import { Head, useForm } from '@inertiajs/vue3';
-import { LoaderCircle } from 'lucide-vue-next';
+import { useForm } from '@inertiajs/vue3'
+import { router } from '@inertiajs/vue3'
+import AuthLayout from '@/layouts/AuthLayout.vue'
 
-defineProps<{
-    status?: string;
-}>();
+const resendForm = useForm({})
 
-const form = useForm({});
+const resend = () => {
+  resendForm.post(route('verification.send'))
+}
 
-const submit = () => {
-    form.post(route('verification.send'));
-};
+const logout = () => {
+  router.post(route('logout'))
+}
 </script>
 
 <template>
-    <AuthLayout title="Verify email" description="Please verify your email address by clicking on the link we just emailed to you.">
-        <Head title="Email verification" />
+  <AuthLayout>
+    <v-card-text class="text-center">
+      <v-icon size="64" color="info" class="mb-4">
+        mdi-email-check
+      </v-icon>
+      
+      <h2 class="text-h5 mb-4">
+        Verifique seu email
+      </h2>
+      
+      <p class="text-body-1 mb-6">
+        Obrigado por se registrar! Antes de começar, você pode verificar seu endereço de email clicando no link que acabamos de enviar para você? Se você não recebeu o email, teremos o prazer de enviar outro.
+      </p>
 
-        <div v-if="status === 'verification-link-sent'" class="mb-4 text-center text-sm font-medium text-green-600">
-            A new verification link has been sent to the email address you provided during registration.
-        </div>
+      <v-btn
+        color="primary"
+        @click="resend"
+        :loading="resendForm.processing"
+        class="mb-4"
+      >
+        Reenviar email de verificação
+      </v-btn>
 
-        <form @submit.prevent="submit" class="space-y-6 text-center">
-            <Button :disabled="form.processing" variant="secondary">
-                <LoaderCircle v-if="form.processing" class="h-4 w-4 animate-spin" />
-                Resend verification email
-            </Button>
-
-            <TextLink :href="route('logout')" method="post" as="button" class="mx-auto block text-sm"> Log out </TextLink>
-        </form>
-    </AuthLayout>
+      <v-btn
+        variant="text"
+        @click="logout"
+        class="mb-4"
+      >
+        Sair
+      </v-btn>
+    </v-card-text>
+  </AuthLayout>
 </template>
