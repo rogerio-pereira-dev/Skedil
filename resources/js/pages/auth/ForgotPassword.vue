@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useForm } from '@inertiajs/vue3'
+import { useForm, usePage } from '@inertiajs/vue3'
 import AuthLayout from '@/layouts/AuthLayout.vue'
 
 const form = useForm({
@@ -9,10 +9,16 @@ const form = useForm({
 const submit = () => {
   form.post(route('password.email'))
 }
+
+const page = usePage()
+const status = page.props.status as string | undefined
 </script>
 
 <template>
   <AuthLayout>
+    <div v-if="status" class="mb-4 text-center text-sm font-medium text-green-600">
+      {{ status }}
+    </div>
     <v-form @submit.prevent="submit">
       <v-text-field
         v-model="form.email"
