@@ -71,11 +71,12 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref } from 'vue'
 import { useTheme } from 'vuetify'
 import { router } from '@inertiajs/vue3'
+import { route } from 'ziggy-js'
 
-const props = defineProps({
+defineProps({
   user: Object,
 })
 

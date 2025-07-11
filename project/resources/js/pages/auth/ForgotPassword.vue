@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 import { useForm, usePage } from '@inertiajs/vue3'
 import AuthLayout from '@/layouts/AuthLayout.vue'
 
@@ -11,7 +11,7 @@ const submit = () => {
 }
 
 const page = usePage()
-const status = page.props.status as string | undefined
+const status = page.props.status
 </script>
 
 <template>
