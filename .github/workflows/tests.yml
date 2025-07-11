@@ -32,22 +32,29 @@ jobs:
           cache: 'npm'
 
       - name: Install Node Dependencies
+        working-directory: ./project
         run: npm install
 
       - name: Install Dependencies
+        working-directory: ./project
         run: composer install --no-interaction --prefer-dist --optimize-autoloader
 
       - name: Copy Environment File
+        working-directory: ./project
         run: cp .env.example .env
 
       - name: Generate Application Key
+        working-directory: ./project
         run: php artisan key:generate
 
       - name: Publish Ziggy Configuration
+        working-directory: ./project
         run: php artisan ziggy:generate
 
       - name: Build Assets
+        working-directory: ./project
         run: npm run build
 
       - name: Tests
+        working-directory: ./project
         run: php artisan test --parallel
