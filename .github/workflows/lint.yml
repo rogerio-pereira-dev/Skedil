@@ -32,7 +32,7 @@ jobs:
 
       - name: Run Pint
         working-directory: ./project
-        run: vendor/bin/pint
+        run: vendor/bin/pint --parallel
 
       - name: Format Frontend
         working-directory: ./project
@@ -42,8 +42,8 @@ jobs:
         working-directory: ./project
         run: npm run lint
 
-      # - name: Commit Changes
-      #   uses: stefanzweifel/git-auto-commit-action@v5
-      #   with:
-      #     commit_message: fix code style
-      #     commit_options: '--no-verify'
+      - name: Commit Changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: style(api/ui)fix code style (pint and lint)
+          commit_options: '--no-verify'
