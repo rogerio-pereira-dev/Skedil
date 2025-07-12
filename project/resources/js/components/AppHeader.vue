@@ -23,9 +23,7 @@ const auth = computed(() => page.props.auth);
 
 const isCurrentRoute = computed(() => (url) => page.url === url);
 
-const activeItemStyles = computed(
-    () => (url) => (isCurrentRoute.value(url) ? 'text-neutral-900 dark:bg-neutral-800 dark:text-neutral-100' : ''),
-);
+const activeItemStyles = computed(() => (url) => (isCurrentRoute.value(url) ? 'text-neutral-900 dark:bg-neutral-800 dark:text-neutral-100' : ''));
 
 const mainNavItems = [
     {

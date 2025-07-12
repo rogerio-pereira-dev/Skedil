@@ -3,12 +3,15 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { useInitials } from '@/composables/useInitials';
 import { computed } from 'vue';
 
-const props = withDefaults(defineProps({
-    user: Object,
-    showEmail: Boolean,
-}), {
-    showEmail: false,
-});
+const props = withDefaults(
+    defineProps({
+        user: Object,
+        showEmail: Boolean,
+    }),
+    {
+        showEmail: false,
+    },
+);
 
 const { getInitials } = useInitials();
 
