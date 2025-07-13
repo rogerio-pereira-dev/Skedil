@@ -5,9 +5,10 @@ Allow users to register, edit and delete clients.
 
 ## Tasks
 - Create `Client` model, migration, and factory
-- Create resource controller
+- Create Api Resource controller
 - Add FormRequest for validation
 - UI: List, create, and edit forms
+- Create UI Routes 
 
 ## Acceptance Criteria
 - Clients can be listed on dashboard
