@@ -1,0 +1,1 @@
+Project to test software engineering using AIs (Cursor + Gemini)
