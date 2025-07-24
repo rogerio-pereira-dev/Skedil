@@ -2,6 +2,7 @@
     "conventionalCommits.scopes": [
         "api",
         "ui",
-        "docker"
+        "docker",
+        "ai"
     ]
 }
