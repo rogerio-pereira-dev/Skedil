@@ -3,7 +3,8 @@
 ## Infrastructure & Setup
 [x] Configure repository
 [x] Set up Trello
-[x] Backend: Laravel + Inertia + PostgreSQL (multitenant)
+[x] Backend: Laravel + Inertia + PostgreSQL
+[ ] Multi tenancy
 [ ] PWA manifest and basic service worker
 
 ## User / Account

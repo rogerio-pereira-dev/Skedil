@@ -18,6 +18,7 @@ All via a simple, responsive web interface.
 ## 2. Tech Stack
 
 - Laravel + Inertia.js
+- Laravel Sail
 - PostgreSQL (local), Aurora Serverless (production)
 - Laravel Scheduler
 - Laravel Socialite / Starter Kit / Sanctum (authentication)
@@ -95,3 +96,8 @@ All via a simple, responsive web interface.
 - Dashboard shows current client count and **upgrade button**
   - Upgrade should be hidden if using Advanced Plan
 - All plans should be registrered in database
+
+# Multitenancy
+This project uses package `spatie/laravel-multitenancy` for multi-tenancy.
+
+The tenant model is `App/Models/User`

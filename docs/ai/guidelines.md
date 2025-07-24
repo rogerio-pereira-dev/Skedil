@@ -111,10 +111,21 @@ __('auth.failed')
 __('dashboard.title')
 ```
 20. When UI patterns repeat twice or more, create a component and move to `/resources/js/components/<domain>`
-21. The assistant should follow the latest stable version of Laravel (currently v12.x) unless explicitly stated otherwise.
-22. Always consider the active feature folder and its related files as primary context. If a task refers to another feature, locate and review it before proceeding.
+21. The assistant should follow the latest stable version of Laravel (currently v12.x) unless explicitly stated 
+otherwise.
+22. Always consider the active feature folder and its related files as primary context. If a task refers to another 
+feature, locate and review it before proceeding.
 23. Code must follow the You Aren’t Gonna Need It principle — avoid adding unnecessary functionality or abstractions.
 24. Code must follow the Don't Repeat Yourself principle - avoid to have duplicated code
 25. Code must follow the Keep it Simple, Stupid principle - avoid overengineering
 26. Use inline comments sparingly, only to clarify non-obvious logic. Do not comment obvious code.
-27. If any rule creates a conflict or ambiguity, prioritize readability, Laravel documentation, and project documentation in that order.
+27. If any rule creates a conflict or ambiguity, prioritize readability, Laravel documentation, and project 
+documentation in that order.
+28. This project uses Laravel sail, so all docker commands should use command `vendor/bin/sail` before all laravel, php,
+npm commands, make sure you run the commands inside `project` folder, so before anything you should run
+`cd project`
+29. All new features should have automated tests
+Test Cases
+- Feature
+- Unit
+- Browser (laravel dusk)
