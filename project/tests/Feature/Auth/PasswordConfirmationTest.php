@@ -30,3 +30,9 @@ test('password is not confirmed with invalid password', function () {
 
     $response->assertSessionHasErrors();
 });
+
+test('confirm password requires password', function () {
+    $user = \App\Models\User::factory()->create();
+    $response = $this->actingAs($user)->post('/confirm-password', []);
+    $response->assertSessionHasErrors('password');
+});

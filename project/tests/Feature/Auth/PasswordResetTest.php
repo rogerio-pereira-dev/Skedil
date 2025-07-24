@@ -58,3 +58,13 @@ test('password can be reset with valid token', function () {
         return true;
     });
 });
+
+test('reset password link requires email', function () {
+    $response = $this->post('/forgot-password', []);
+    $response->assertSessionHasErrors('email');
+});
+
+test('reset password link requires valid email', function () {
+    $response = $this->post('/forgot-password', ['email' => 'not-an-email']);
+    $response->assertSessionHasErrors('email');
+});

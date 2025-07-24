@@ -39,3 +39,18 @@ test('users can logout', function () {
     $this->assertGuest();
     $response->assertRedirect('/');
 });
+
+test('login is rate limited after too many attempts', function () {
+    $user = \App\Models\User::factory()->create([
+        'email' => 'ratelimit@example.com',
+        'password' => bcrypt('password'),
+    ]);
+    for ($i = 0; $i < 6; $i++) {
+        $response = $this->post('/login', [
+            'email' => $user->email,
+            'password' => 'wrong-password',
+        ]);
+    }
+    $response->assertSessionHasErrors('email');
+    $this->assertStringContainsString('seconds', $response->getSession()->get('errors')->first('email'));
+});
